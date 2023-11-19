@@ -77,11 +77,11 @@ with col1:
     #    'O': [7, 7, 7, 8, 7, 7, 7, 7, 7, 7,
     #          7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
     #          7, 7, 7, 8, 7, 7, 8, 7, 8, 7],
-        'Av.': [26, 26, 18, 10, 18, 7, 6, 7, 8, 4,
+        'Av.': [26, 26, 18, 10, 18, 7, 6, 9, 8, 4,
                13, 9, 4, 8, 7, 6, 4, 4, 3, 8,
                3, 6, 0, 0, 0, 0, -9, 2, -3, 0],
-        'P': [21, 21, 19, 19, 18, 16, 16, 15, 14, 13,
-              17, 16, 15, 13, 13, 13, 13, 13, 12, 11,
+        'P': [21, 21, 19, 19, 18, 16, 16, 18, 14, 13,
+              17, 16, 15, 13, 13, 14, 13, 13, 12, 11,
               13, 12, 12, 11, 11, 11, 11, 10, 9, 7]
     }
 
@@ -296,9 +296,9 @@ with col1:
     table = ct_sorted.style.apply(lambda x: ['background: lightblue' if i < 5 else '' for i, val in enumerate(x.index)],
                                   axis=0) \
         .apply(lambda x: ['background: lightgreen' if 5 <= i < 11 else '' for i, val in enumerate(x.index)], axis=0) \
-        .apply(lambda x: ['background: plum' if 11 <= i < 17 else '' for i, val in enumerate(x.index)], axis=0) \
-        .apply(lambda x: ['background: wheat' if 17 <= i <= 19 else '' for i, val in enumerate(x.index)], axis=0) \
-        .apply(lambda x: ['background: gray' if 19 <= i else '' for i, val in enumerate(x.index)], axis=0)
+        .apply(lambda x: ['background: wheat' if 11 <= i < 17 else '' for i, val in enumerate(x.index)], axis=0) \
+        .apply(lambda x: ['background: lightcoral' if 17 <= i <= 19 else '' for i, val in enumerate(x.index)], axis=0) \
+        .apply(lambda x: ['background: lightgray' if 19 < i else '' for i, val in enumerate(x.index)], axis=0)
 
     # CSS to inject contained in a string
     hide_table_row_index = """

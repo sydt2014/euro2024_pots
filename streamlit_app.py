@@ -69,11 +69,19 @@ with col1:
                18, 9, 4, 8, 7, 6, 4, 5, 3, 8,
                3, 6, 0, 0, 0, 0, -9, 2, -3, 0]
     }
+    data = {
+    'Rnk': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    'Grp': ['J', 'B', 'A', 'F', 'C', 'G', 'D', 'H', 'E', 'I', 'F', 'A', 'J', 'B', 'G', 'D', 'C', 'H', 'E', 'I', 'C', 'B', 'H', 'A', 'E', 'D', 'G', 'J', 'F', 'I'],
+    'Team': ['Portugal', 'France', 'Spain', 'Belgium', 'England', 'Hungary', 'Turkey', 'Denmark', 'Albania', 'Romania', 'Austria', 'Scotland', 'Slovakia', 'Netherlands', 'Serbia', 'Croatia', 'Italy', 'Slovenia', 'Czech Republic', 'Switzerland', 'Ukraine', 'Greece', 'Kazakhstan', 'Norway', 'Poland', 'Wales', 'Montenegro', 'Luxembourg', 'Sweden', 'Israel'],
+    'P': [24, 21, 21, 20, 19, 18, 16, 16, 14, 13, 19, 17, 16, 15, 14, 13, 13, 13, 13, 11, 13, 12, 11, 11, 11, 11, 11, 11, 10, 9],
+    'Av.': [28, 26, 20, 18, 18, 9, 7, 6, 8, 4, 10, 9, 5, 4, 6, 8, 7, 4, 3, 8, 3, 4, 0, 2, 0, 0, -2, -9, 2, -3],
+    'Siralama': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+}
 
     ct = pd.DataFrame(data)
 
     # Yeni "Grp_Rnk" sütunu ekleyerek istenilen değerleri atayalım
-    ct['Siralama'] = pd.cut(ct['Rnk'], bins=[0, 10, 20, float('inf')], labels=[1, 2, 3], right=False).astype(int)
+    # ct['Siralama'] = pd.cut(ct['Rnk'], bins=[0, 10, 20, float('inf')], labels=[1, 2, 3], right=False).astype(int)
 
 
     # Türkiye

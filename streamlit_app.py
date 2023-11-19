@@ -296,7 +296,7 @@ with col1:
     table = ct_sorted.style.apply(lambda x: ['background: lightblue' if i < 5 else '' for i, val in enumerate(x.index)],
                                   axis=0) \
         .apply(lambda x: ['background: lightgreen' if 5 <= i < 11 else '' for i, val in enumerate(x.index)], axis=0) \
-        .apply(lambda x: ['background: orange' if 11 <= i < 17 else '' for i, val in enumerate(x.index)], axis=0) \
+        .apply(lambda x: ['background: lightsalmon1' if 11 <= i < 17 else '' for i, val in enumerate(x.index)], axis=0) \
         .apply(lambda x: ['background: lightyellow' if 17 <= i <= 19 else '' for i, val in enumerate(x.index)], axis=0)
 
     # CSS to inject contained in a string

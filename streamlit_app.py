@@ -51,28 +51,11 @@ with st.sidebar:
 
 with col1:
     data = {
-        'Rnk': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
-                 29, 30],
-        'Grp': ['J', 'B', 'C', 'F', 'A', 'D', 'H', 'G', 'E', 'I',
-                'F', 'A', 'B', 'D', 'C', 'G', 'H', 'J', 'E', 'I',
-                'C', 'B', 'H', 'E', 'D', 'G', 'J', 'A', 'I', 'F'],
-        'Team': ['Portekiz', 'Fransa', 'İngiltere', 'Avusturya', 'İspanya',
-                     'Türkiye', 'Danimarka', 'Macaristan', 'Arnavutluk', 'Romanya',
-                     'Belçika', 'İskoçya', 'Hollanda', 'Hırvatistan', 'İtalya',
-                     'Sırbistan', 'Slovenya', 'Slovakya', 'Çekya', 'İsviçre',
-                     'Ukrayna', 'Yunanistan', 'Kazakistan', 'Polonya', 'Galler',
-                     'Karadağ', 'Lüksemburg', 'Norveç', 'İsrail', 'İsveç'],
-        'P': [24, 21, 19, 19, 21, 16, 16, 18, 14, 13,
-              20, 17, 15, 13, 13, 14, 13, 16, 12, 11,
-              13, 12, 12, 11, 11, 11, 11, 10, 9, 7],
-        'Av.': [28, 26, 18, 10, 20, 7, 6, 9, 8, 4,
-               18, 9, 4, 8, 7, 6, 4, 5, 3, 8,
-               3, 6, 0, 0, 0, 0, -9, 2, -3, 0]
-    }
-    data = {
     'Rnk': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
     'Grp': ['J', 'B', 'A', 'F', 'C', 'G', 'D', 'H', 'E', 'I', 'F', 'A', 'J', 'B', 'G', 'D', 'C', 'H', 'E', 'I', 'C', 'B', 'H', 'A', 'E', 'D', 'G', 'J', 'F', 'I'],
-    'Team': ['Portugal', 'France', 'Spain', 'Belgium', 'England', 'Hungary', 'Turkey', 'Denmark', 'Albania', 'Romania', 'Austria', 'Scotland', 'Slovakia', 'Netherlands', 'Serbia', 'Croatia', 'Italy', 'Slovenia', 'Czech Republic', 'Switzerland', 'Ukraine', 'Greece', 'Kazakhstan', 'Norway', 'Poland', 'Wales', 'Montenegro', 'Luxembourg', 'Sweden', 'Israel'],
+    'Team': ['Portekiz', 'Fransa', 'İspanya', 'Belçika', 'İngiltere', 'Macaristan', 'Türkiye', 'Danimarka', 'Arnavutluk', 'Romanya', 
+             'Avusturya', 'İskoçya', 'Slovakya', 'Hollanda', 'Sırbistan', 'Hırvatistan', 'İtalya', 'Slovenya', 'Çekya', 'İsviçre', 
+             'Ukrayna', 'Yunanistan', 'Kazakistan', 'Norveç', 'Polonya', 'Galler', 'Karadağ', 'Lüksemburg', 'İsveç', 'İsrail'],
     'P': [24, 21, 21, 20, 19, 18, 16, 16, 14, 13, 19, 17, 16, 15, 14, 13, 13, 13, 13, 11, 13, 12, 11, 11, 11, 11, 11, 11, 10, 9],
     'Av.': [28, 26, 20, 18, 18, 9, 7, 6, 8, 4, 10, 9, 5, 4, 6, 8, 7, 4, 3, 8, 3, 4, 0, 2, 0, 0, -2, -9, 2, -3],
     'Siralama': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],

@@ -12,21 +12,9 @@ with st.sidebar:
     gal_value = gal.number_input("🏴󠁧󠁢󠁷󠁬󠁳󠁿 Galler", min_value=0, max_value=10, step=1)
     tr_value = tr.number_input("🇹🇷 Türkiye", min_value=0, max_value=10, step=1)
 
-    hs1, as1 = st.columns([0.5, 0.5])
-    bel_value = hs1.number_input("🇧🇪 Belçika", min_value=0, max_value=10, step=1)
-    aze_value = as1.number_input("🇦🇿 Azerbaycan", min_value=0, max_value=10, step=1)
-
-    hs2, as2 = st.columns([0.5, 0.5])
-    spa_value = hs2.number_input("🇪🇸 İspanya", min_value=0, max_value=10, step=1)
-    gur_value = as2.number_input("🇬🇪 Gürcistan", min_value=0, max_value=10, step=1)
-
-    hs3, as3 = st.columns([0.5, 0.5])
-    sco_value = hs3.number_input("🏴󠁧󠁢󠁳󠁣󠁴󠁿 İskoçya", min_value=0, max_value=10, step=1)
-    nor_value = as3.number_input("🇳🇴 Norveç", min_value=0, max_value=10, step=1)
-
     hs4, as4 = st.columns([0.5, 0.5])
-    dan_value = hs4.number_input("🇩🇰 Danimarka", min_value=0, max_value=10, step=1)
-    nir_value = as4.number_input("🇬🇧 K. İrlanda", min_value=0, max_value=10, step=1)
+    dan_value = as4.number_input("🇩🇰 Danimarka", min_value=0, max_value=10, step=1)
+    nir_value = hs4.number_input("🇬🇧 K. İrlanda", min_value=0, max_value=10, step=1)
 
     hs5, as5 = st.columns([0.5, 0.5])
     hir_value = hs5.number_input("🇭🇷 Hırvatistan", min_value=0, max_value=10, step=1)
@@ -102,21 +90,10 @@ with col1:
     else:
         ct.loc[ct['Team'] == 'Türkiye', 'P'] += 0
 
-    # Spain
-    if gur_value < spa_value:
-        ct.loc[ct['Team'] == 'İspanya', 'P'] += 3
-    elif gur_value == spa_value:
-        ct.loc[ct['Team'] == 'İspanya', 'P'] += 1
-    elif (gur_value > spa_value) & (sco_value > nor_value):
-        ct.loc[ct['Team'] == 'İspanya', 'Siralama'] = 2
-        ct.loc[ct['Team'] == 'İskoçya', 'Siralama'] = 1
-    else:
-        ct.loc[ct['Team'] == 'İspanya', 'P'] += 0
-
     # Denmark
     if nir_value < dan_value:
         ct.loc[ct['Team'] == 'Danimarka', 'P'] += 3
-    elif gur_value == spa_value:
+    elif nir_value == dan_value:
         ct.loc[ct['Team'] == 'Danimarka', 'P'] += 1
     else:
         ct.loc[ct['Team'] == 'Danimarka', 'P'] += 0
@@ -142,28 +119,6 @@ with col1:
         ct.loc[ct['Team'] == 'İsviçre', 'Siralama'] = 1
     else:
         ct.loc[ct['Team'] == 'Romanya', 'P'] += 0
-
-    # Belgium
-    if bel_value > aze_value:
-        ct.loc[ct['Team'] == 'Belçika', 'P'] += 3
-        ct.loc[ct['Team'] == 'Belçika', 'Siralama'] = 1
-        ct.loc[ct['Team'] == 'Avusturya', 'Siralama'] = 2
-    elif bel_value == aze_value:
-        ct.loc[ct['Team'] == 'Belçika', 'P'] += 1
-    else:
-        ct.loc[ct['Team'] == 'Belçika', 'P'] += 0
-
-    # Scotland
-    if (sco_value > nor_value) & (gur_value > spa_value):
-        ct.loc[ct['Team'] == 'İspanya', 'Siralama'] = 2
-        ct.loc[ct['Team'] == 'İskoçya', 'Siralama'] = 1
-        ct.loc[ct['Team'] == 'İskoçya', 'P'] += 3
-    elif (sco_value > nor_value) & (gur_value <= spa_value):
-        ct.loc[ct['Team'] == 'İskoçya', 'P'] += 3
-    elif sco_value == nor_value:
-        ct.loc[ct['Team'] == 'İskoçya', 'P'] += 1
-    else:
-        ct.loc[ct['Team'] == 'İskoçya', 'P'] += 0
 
     # Hollanda
     if ceb_value < hol_value:
@@ -210,14 +165,6 @@ with col1:
         ct.loc[ct['Team'] == 'Kazankistan', 'Siralama'] = 2
     else:
         ct.loc[ct['Team'] == 'Slovenya', 'P'] += 0
-
-    # Slovakya
-    if svk_value > bos_value:
-        ct.loc[ct['Team'] == 'Slovakya', 'P'] += 3
-    elif svk_value == bos_value:
-        ct.loc[ct['Team'] == 'Slovakya', 'P'] += 1
-    else:
-        ct.loc[ct['Team'] == 'Slovakya', 'P'] += 0
 
     # Çekya
     if (arn_value < far_value) & (cek_value > mol_value):
@@ -273,9 +220,6 @@ with col1:
 
     ct.loc[ct['Team'] == 'Türkiye', 'Av.'] += tr_value-gal_value
     ct.loc[ct['Team'] == 'Galler', 'Av.'] += gal_value-tr_value
-    ct.loc[ct['Team'] == 'İspanya', 'Av.'] += spa_value - gur_value
-    ct.loc[ct['Team'] == 'Belçika', 'Av.'] += bel_value-aze_value
-    ct.loc[ct['Team'] == 'İskoçya', 'Av.'] += sco_value-nor_value
     ct.loc[ct['Team'] == 'Danimarka', 'Av.'] += dan_value - nir_value
     ct.loc[ct['Team'] == 'Hırvatistan', 'Av.'] += hir_value - erm_value
     ct.loc[ct['Team'] == 'Arnavutluk', 'Av.'] += arn_value-far_value

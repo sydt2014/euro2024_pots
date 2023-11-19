@@ -53,8 +53,8 @@ with col1:
     data = {
     'Rnk': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
     'Grp': ['J', 'B', 'A', 'F', 'C', 'G', 'D', 'H', 'E', 'I', 'F', 'A', 'J', 'B', 'G', 'D', 'C', 'H', 'E', 'I', 'C', 'B', 'H', 'A', 'E', 'D', 'G', 'J', 'F', 'I'],
-    'Team': ['Portekiz', 'Fransa', 'İspanya', 'Belçika', 'İngiltere', 'Macaristan', 'Türkiye', 'Danimarka', 'Arnavutluk', 'Romanya', 
-             'Avusturya', 'İskoçya', 'Slovakya', 'Hollanda', 'Sırbistan', 'Hırvatistan', 'İtalya', 'Slovenya', 'Çekya', 'İsviçre', 
+    'Team': ['Portekiz', 'Fransa', 'İspanya', 'Belçika', 'İngiltere', 'Macaristan', 'Türkiye', 'Danimarka', 'Arnavutluk', 'Romanya',
+             'Avusturya', 'İskoçya', 'Slovakya', 'Hollanda', 'Sırbistan', 'Hırvatistan', 'İtalya', 'Slovenya', 'Çekya', 'İsviçre',
              'Ukrayna', 'Yunanistan', 'Kazakistan', 'Norveç', 'Polonya', 'Galler', 'Karadağ', 'Lüksemburg', 'İsveç', 'İsrail'],
     'P': [24, 21, 21, 20, 19, 18, 16, 16, 14, 13, 19, 17, 16, 15, 14, 13, 13, 13, 13, 11, 13, 12, 11, 11, 11, 11, 11, 11, 10, 9],
     'Av.': [28, 26, 20, 18, 18, 9, 7, 6, 8, 4, 10, 9, 5, 4, 6, 8, 7, 4, 3, 8, 3, 4, 0, 2, 0, 0, -2, -9, 2, -3],
@@ -150,7 +150,7 @@ with col1:
         ct.loc[ct['Team'] == 'Slovenya', 'P'] += 1
     elif slo_value < kaz_value:
         ct.loc[ct['Team'] == 'Slovenya', 'Siralama'] = 3
-        ct.loc[ct['Team'] == 'Kazankistan', 'Siralama'] = 2
+        ct.loc[ct['Team'] == 'Kazakistan', 'Siralama'] = 2
     else:
         ct.loc[ct['Team'] == 'Slovenya', 'P'] += 0
 
@@ -186,13 +186,13 @@ with col1:
 
     # Kazakistan
     if slo_value < kaz_value:
-        ct.loc[ct['Team'] == 'Kazankistan', 'P'] += 3
+        ct.loc[ct['Team'] == 'Kazakistan', 'P'] += 3
         ct.loc[ct['Team'] == 'Slovenya', 'Siralama'] = 3
-        ct.loc[ct['Team'] == 'Kazankistan', 'Siralama'] = 2
+        ct.loc[ct['Team'] == 'Kazakistan', 'Siralama'] = 2
     elif slo_value == kaz_value:
-        ct.loc[ct['Team'] == 'Kazankistan', 'P'] += 1
+        ct.loc[ct['Team'] == 'Kazakistan', 'P'] += 1
     else:
-        ct.loc[ct['Team'] == 'Kazankistan', 'P'] += 0
+        ct.loc[ct['Team'] == 'Kazakistan', 'P'] += 0
 
     # Galler
     if (gal_value > tr_value) & (erm_value >= hir_value):

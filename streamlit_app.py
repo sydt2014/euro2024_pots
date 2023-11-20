@@ -5,9 +5,9 @@ st.set_page_config(layout="wide")
 
 st.title("Euro 2024 Torba Simülasyonu")
 
-col1, col2 = st.columns([0.3, 0.7])
+col1, col2, col3 = st.columns([0.3, 0.3, 0.4])
 
-with st.sidebar:
+with col1:
     gal, tr = st.columns([0.5, 0.5])
     gal_value = gal.number_input("🏴󠁧󠁢󠁷󠁬󠁳󠁿 Galler", min_value=0, max_value=10, step=1)
     tr_value = tr.number_input("🇹🇷 Türkiye", min_value=0, max_value=10, step=1)
@@ -49,7 +49,7 @@ with st.sidebar:
     bos_value = as12.number_input("🇧🇦 Bosna-Hersek", min_value=0, max_value=10, step=1)
 
 
-with col1:
+with col2:
     data = {
     'Rnk': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
     'Grp': ['J', 'B', 'A', 'F', 'C', 'G', 'D', 'H', 'E', 'I', 'F', 'A', 'J', 'B', 'G', 'D', 'C', 'H', 'E', 'I', 'C', 'B', 'H', 'A', 'E', 'D', 'G', 'J', 'F', 'I'],

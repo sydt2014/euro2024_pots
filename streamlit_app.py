@@ -5,7 +5,7 @@ st.set_page_config(layout="wide")
 
 st.title("Euro 2024 Torba Simülasyonu")
 
-col1, col2, col3 = st.columns([0.3, 0.3, 0.4])
+col1, col2, col3 = st.columns([0.3, 0.5, 0.2])
 
 with col1:
     gal, tr = st.columns([0.5, 0.5])
@@ -48,24 +48,35 @@ with col1:
     svk_value = hs12.number_input("🇸🇰 Slovakya", min_value=0, max_value=10, step=1)
     bos_value = as12.number_input("🇧🇦 Bosna-Hersek", min_value=0, max_value=10, step=1)
 
-
 with col2:
     data = {
-    'Rnk': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
-    'Grp': ['J', 'B', 'A', 'F', 'C', 'G', 'D', 'H', 'E', 'I', 'F', 'A', 'J', 'B', 'G', 'D', 'C', 'H', 'E', 'I', 'C', 'B', 'H', 'A', 'E', 'D', 'G', 'J', 'F', 'I'],
-    'Team': ['Portekiz', 'Fransa', 'İspanya', 'Belçika', 'İngiltere', 'Macaristan', 'Türkiye', 'Danimarka', 'Arnavutluk', 'Romanya',
-             'Avusturya', 'İskoçya', 'Slovakya', 'Hollanda', 'Sırbistan', 'Hırvatistan', 'İtalya', 'Slovenya', 'Çekya', 'İsviçre',
-             'Ukrayna', 'Yunanistan', 'Kazakistan', 'Norveç', 'Polonya', 'Galler', 'Karadağ', 'Lüksemburg', 'İsveç', 'İsrail'],
-    'P': [24, 21, 21, 20, 19, 18, 16, 16, 14, 13, 19, 17, 16, 15, 14, 13, 13, 13, 13, 11, 13, 12, 11, 11, 11, 11, 11, 11, 10, 9],
-    'Av.': [28, 26, 20, 18, 18, 9, 7, 6, 8, 4, 10, 9, 5, 4, 6, 8, 7, 4, 3, 8, 3, 4, 0, 2, 0, 0, -2, -9, 2, -3],
-    'Siralama': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-}
+        'Rnk': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+                21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+        'Grp': ['J', 'B', 'A', 'F', 'C', 'G', 'D', 'H', 'E', 'I',
+                'F', 'A', 'J', 'B', 'G', 'D', 'C', 'H', 'E', 'I',
+                'C', 'B', 'H', 'A', 'E', 'D', 'G', 'J', 'F', 'I'],
+        'Team': ['Portekiz', 'Fransa', 'İspanya', 'Belçika', 'İngiltere',
+                 'Macaristan', 'Türkiye', 'Danimarka', 'Arnavutluk', 'Romanya',
+                 'Avusturya', 'İskoçya', 'Slovakya', 'Hollanda', 'Sırbistan',
+                 'Hırvatistan', 'İtalya', 'Slovenya', 'Çekya', 'İsviçre',
+                 'Ukrayna', 'Yunanistan', 'Kazakistan', 'Norveç', 'Polonya',
+                 'Galler', 'Karadağ', 'Lüksemburg', 'İsveç', 'İsrail'],
+        'P': [24, 21, 21, 20, 19, 18, 16, 16, 14, 13,
+              19, 17, 16, 15, 14, 13, 13, 13, 13, 11,
+              13, 12, 11, 11, 11, 11, 11, 11, 10, 9],
+        'Av.': [28, 26, 20, 18, 18, 9, 7, 6, 8, 4,
+                10, 9, 5, 4, 6, 8, 7, 4, 3, 8,
+                3, 4, 0, 2, 0, 0, -2, -9, 2, -3],
+        'Siralama': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                     2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+                     3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+    }
 
     ct = pd.DataFrame(data)
 
     # Yeni "Grp_Rnk" sütunu ekleyerek istenilen değerleri atayalım
     # ct['Siralama'] = pd.cut(ct['Rnk'], bins=[0, 10, 20, float('inf')], labels=[1, 2, 3], right=False).astype(int)
-
 
     # Türkiye
     if tr_value > gal_value:
@@ -206,33 +217,32 @@ with col2:
     else:
         ct.loc[ct['Team'] == 'Galler', 'P'] += 0
 
-    ct.loc[ct['Team'] == 'Türkiye', 'Av.'] += tr_value-gal_value
-    ct.loc[ct['Team'] == 'Galler', 'Av.'] += gal_value-tr_value
+    ct.loc[ct['Team'] == 'Türkiye', 'Av.'] += tr_value - gal_value
+    ct.loc[ct['Team'] == 'Galler', 'Av.'] += gal_value - tr_value
     ct.loc[ct['Team'] == 'Danimarka', 'Av.'] += dan_value - nir_value
     ct.loc[ct['Team'] == 'Hırvatistan', 'Av.'] += hir_value - erm_value
-    ct.loc[ct['Team'] == 'Arnavutluk', 'Av.'] += arn_value-far_value
+    ct.loc[ct['Team'] == 'Arnavutluk', 'Av.'] += arn_value - far_value
     ct.loc[ct['Team'] == 'Çekya', 'Av.'] += cek_value - mol_value
     ct.loc[ct['Team'] == 'Romanya', 'Av.'] += rom_value - swi_value
     ct.loc[ct['Team'] == 'İsviçre', 'Av.'] += swi_value - rom_value
     ct.loc[ct['Team'] == 'Hollanda', 'Av.'] += hol_value - ceb_value
     ct.loc[ct['Team'] == 'Ukrayna', 'Av.'] += ukr_value - ita_value
-    ct.loc[ct['Team'] == 'İtalya', 'Av.'] += ita_value-ukr_value
+    ct.loc[ct['Team'] == 'İtalya', 'Av.'] += ita_value - ukr_value
     ct.loc[ct['Team'] == 'Slovenya', 'Av.'] += slo_value - kaz_value
-    ct.loc[ct['Team'] == 'Kazakistan', 'Av.'] += kaz_value-slo_value
-    ct.loc[ct['Team'] == 'Slovakya', 'Av.'] += svk_value-bos_value
+    ct.loc[ct['Team'] == 'Kazakistan', 'Av.'] += kaz_value - slo_value
+    ct.loc[ct['Team'] == 'Slovakya', 'Av.'] += svk_value - bos_value
 
     ct_sorted = ct.sort_values(["Siralama", "P", "Av."], ascending=[True, False, False])
-    #ct_sorted.drop("Rnk", inplace=True)
     ct_sorted.drop(['Rnk'], axis=1, inplace=True)
 
     table = ct_sorted.style.apply(lambda x: ['background: lightblue' if i < 5 else '' for i, val in enumerate(x.index)],
-                                  axis=0) \
+                                  axis=0)\
         .apply(lambda x: ['background: lightgreen' if 5 <= i < 11 else '' for i, val in enumerate(x.index)], axis=0) \
         .apply(lambda x: ['background: wheat' if 11 <= i < 17 else '' for i, val in enumerate(x.index)], axis=0) \
         .apply(lambda x: ['background: lightcoral' if 17 <= i <= 19 else '' for i, val in enumerate(x.index)], axis=0) \
         .apply(lambda x: ['background: lightgray' if 19 < i else '' for i, val in enumerate(x.index)], axis=0)
 
-    # CSS to inject contained in a string
+# CSS to inject contained in a string
     hide_table_row_index = """
                 <style>
                 thead tr th:first-child {display:none}

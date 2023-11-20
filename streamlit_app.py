@@ -5,7 +5,18 @@ st.set_page_config(layout="wide")
 
 st.title("Euro 2024 Torba Simülasyonu")
 
-col1, col2, col3 = st.columns([0.3, 0.5, 0.2])
+col1, col2, col3 = st.columns([0.1, 0.5, 0.4])
+
+custom_css = """
+<style>
+div[data-baseweb="input"] input[type="number"] {
+    width: 70px;  /* İstediğiniz genişliği burada belirleyin */
+}
+</style>
+"""
+
+# CSS stilini uygula
+st.markdown(custom_css, unsafe_allow_html=True)
 
 with col1:
     gal, tr = st.columns([0.5, 0.5])

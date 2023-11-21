@@ -22,15 +22,16 @@ with col1:
     gal, tr = st.columns([0.5, 0.5])
     gal_value = gal.number_input("🏴󠁧󠁢󠁷󠁬󠁳󠁿 Galler", min_value=0, max_value=10, step=1)
     tr_value = tr.number_input("🇹🇷 Türkiye", min_value=0, max_value=10, step=1)
-
+    text = ''' --- '''
+    st.markdown(text)
     hs5, as5 = st.columns([0.5, 0.5])
     hir_value = hs5.number_input("🇭🇷 Hırvatistan", min_value=0, max_value=10, step=1)
     erm_value = as5.number_input("🇦🇲 Ermenistan", min_value=0, max_value=10, step=1)
-
+    st.markdown(text)
     hs8, as8 = st.columns([0.5, 0.5])
     rom_value = hs8.number_input("🇷🇴 Romanya", min_value=0, max_value=10, step=1)
     swi_value = as8.number_input("🇨🇭 İsviçre", min_value=0, max_value=10, step=1)
-
+    st.markdown(text)
     hs9, as9 = st.columns([0.5, 0.5])
     ceb_value = hs9.number_input("🇬🇮 Cebelitarık", min_value=0, max_value=10, step=1)
     hol_value = as9.number_input("🇳🇱 Hollanda", min_value=0, max_value=10, step=1)

@@ -5,7 +5,7 @@ st.set_page_config(layout="wide")
 
 st.title("Euro 2024 Torba Simülasyonu")
 
-col1, col2, col3 = st.columns([0.3, 0.4, 0.3])
+col1, col2, col3 = st.columns([0.3, 0.3, 0.4])
 
 custom_css = """
 <style>
@@ -56,7 +56,6 @@ with col2:
     }
 
     ct = pd.DataFrame(data)
-
     # Yeni "Grp_Rnk" sütunu ekleyerek istenilen değerleri atayalım
     # ct['Siralama'] = pd.cut(ct['Rnk'], bins=[0, 10, 20, float('inf')], labels=[1, 2, 3], right=False).astype(int)
 
@@ -155,3 +154,92 @@ with col2:
     st.markdown(hide_table_row_index, unsafe_allow_html=True)
 
     st.table(table)
+
+with col3:
+
+    hide_table_row_index = """
+                <style>
+                thead tr th:first-child {display:none}
+                tbody th {display:none}
+                </style>
+                """
+    st.markdown(hide_table_row_index, unsafe_allow_html=True)
+
+    s1 = dict(selector='th', props=[('text-align', 'center')])
+    s2 = dict(selector='td', props=[('text-align', 'center')])
+
+    col1, col2, col3, col4 = st.columns([0.25, 0.25, 0.25, 0.25])
+
+    pot1 = ct_sorted[["Team"]].iloc[0:5]
+    new_row = pd.DataFrame({'Team': 'Almanya'}, index=[0])
+    pot1 = pd.concat([new_row, pot1.loc[:]]).reset_index(drop=True)
+    pot2 = ct_sorted[["Team"]].iloc[5:11]
+    pot3 = ct_sorted[["Team"]].iloc[11:17]
+    pot4 = ct_sorted[["Team"]].iloc[17:20]
+
+    last_row_team = ct_sorted.iloc[-1]['Team']
+
+    if last_row_team == 'Hırvatistan':
+        po_df = pd.DataFrame({
+            'Team': [
+                '🇭🇷󠁧󠁢󠁷 / 🇪🇪 / 🇵🇱 / 🇮🇸',
+                '🇮🇱 / 🇺🇦 / 🇧🇦 / 🇫🇮',
+                '🇬🇪 / 🇱🇺 / 🇬🇷 / 🇰🇿'
+            ]
+        })
+    else:
+        po_df = pd.DataFrame({
+            'Team': [
+                '🏴󠁧󠁢󠁷󠁬󠁳󠁿 / 🇪🇪 / 🇵🇱 / 🇮🇸',
+                '🇮🇱 / 🇺🇦 / 🇧🇦 / 🇫🇮',
+                '🇬🇪 / 🇱🇺 / 🇬🇷 / 🇰🇿'
+            ]
+        })
+
+    pot4 = pd.concat([pot4, po_df], axis=0)
+
+    # Pot 1 tablosunu oluşturun
+    with col1:
+        pot1.rename(columns={'Team': 'Pot 1 Takımları'}, inplace=True)
+        pot1_style = pot1.style.set_table_styles([
+            {'selector': 'thead', 'props': [('background-color', 'lightblue'), ('color', 'white')]},
+            {'selector': 'tbody', 'props': [('background-color', 'lightblue')]},
+            {'selector': 'th', 'props': [('text-align', 'center'), ('font-weight', 'bold')]},
+            {'selector': 'td', 'props': [('text-align', 'center')]},
+        ]).hide(axis=0)
+        st.table(pot1_style)
+
+    # Pot 2 tablosunu oluşturun
+    with col2:
+        pot2.rename(columns={'Team': 'Pot 2 Takımları'}, inplace=True)
+        pot2_style = pot2.style.set_table_styles([
+            {'selector': 'thead', 'props': [('background-color', 'lightgreen'), ('color', 'white')]},
+            {'selector': 'tbody', 'props': [('background-color', 'lightgreen')]},
+            {'selector': 'th', 'props': [('text-align', 'center'), ('font-weight', 'bold')]},
+            {'selector': 'td', 'props': [('text-align', 'center')]},
+        ]).hide(axis=0)
+        st.table(pot2_style)
+
+    # Pot 3 tablosunu oluşturun
+    with col3:
+        pot3.rename(columns={'Team': 'Pot 3 Takımları'}, inplace=True)
+        pot3_style = pot3.style.set_table_styles([
+            {'selector': 'thead', 'props': [('background-color', 'wheat'), ('color', 'white')]},
+            {'selector': 'tbody', 'props': [('background-color', 'wheat')]},
+            {'selector': 'th', 'props': [('text-align', 'center'), ('font-weight', 'bold')]},
+            {'selector': 'td', 'props': [('text-align', 'center')]},
+        ]).hide(axis=0)
+        st.table(pot3_style)
+
+    # Pot 4 tablosunu oluşturun
+    with col4:
+        pot4.rename(columns={'Team': 'Pot 4 Takımları'}, inplace=True)
+        pot4_style = pot4.style.set_table_styles([
+            {'selector': 'thead', 'props': [('background-color', 'lightcoral'), ('color', 'white')]},
+            {'selector': 'tbody', 'props': [('background-color', 'lightcoral')]},
+            {'selector': 'th', 'props': [('text-align', 'center'), ('font-weight', 'bold')]},
+            {'selector': 'td', 'props': [('text-align', 'center')]},
+        ]).hide(axis=0)
+        st.table(pot4_style)
+
+

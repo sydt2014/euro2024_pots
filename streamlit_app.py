@@ -3,7 +3,7 @@ import pandas as pd
 
 st.set_page_config(layout="wide")
 
-st.title("Euro 2024 Torba Simülasyonu")
+st.title("Star 2024 LC sydt")
 
 col1, col2, col3 = st.columns([0.3, 0.3, 0.4])
 
